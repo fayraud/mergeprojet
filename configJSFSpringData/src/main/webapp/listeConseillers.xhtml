@@ -5,7 +5,7 @@
 	xmlns:p="http://primefaces.org/ui">
 <h:head>
 	<meta charset="UTF-8" />
-	<title>Liste des conseillers</title>
+	<title>Accueil Gerant</title>
 	<link rel="stylesheet" href = "css/style.css" />
 </h:head>
 <h:body>
@@ -22,7 +22,7 @@
        </p:menubar>
 	</h:form>
 	
-	<h2>Liste des conseillers</h2>
+	<h3>Liste des conseillers</h3>
 	
 	<h:form>
 		<p:dataTable value="#{conseillerBean.conseillers}" var="c" border="1" style="width: 700">
@@ -40,16 +40,31 @@
 			<p:column>
 				<f:facet name="header">Prénom</f:facet>
 				<h:outputText value="#{c.prenom}" />
+
 			</p:column>
 			<p:column>
-				<f:facet name="header">Action</f:facet>
-					<h:commandLink action="#{conseillerBean.delete}" value="Suppr"  id="suppr" >
-				<f:setPropertyActionListener value="#{c}" target="#{conseillerBean.conseiller}"/>	
-				</h:commandLink>				
-			</p:column>	
+				<f:facet name="header">Détails</f:facet>
+				<h:commandLink action="#{conseillerBean.afficherDetails}"
+					value="Details">
+					<f:setPropertyActionListener value="#{c}"
+						target="#{conseillerBean.conseiller}" />
+				</h:commandLink>
+
+			</p:column>
 		</p:dataTable>
 	</h:form>
+	<br/>
+	<p:commandButton value=" Ajouter un conseiller"
+			action="#{conseillerBean.nouveau}" />
 	<H3>Accès au graphique de suivi Virement</H3>
-	<a href="pie.xhtml">accéder au graphique</a>
+	<br/>
+	<p:commandButton value="accéder au graphique"
+			action="pie.xhtml" />
+			
+
+<H3>Accès a la liste des Comptes à découvert</H3>
+	<br/>
+	<p:commandButton value="accéder liste"
+			action="#{compteBean.listeComptesDecouvert}" />
 </h:body>
 </html>

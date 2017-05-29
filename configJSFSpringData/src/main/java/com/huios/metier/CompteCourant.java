@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 @Scope("prototype")
 @DiscriminatorValue("COURANT")
 public class CompteCourant extends Compte {
+	
+	
 
 	private double decouvert = 1000;;
 

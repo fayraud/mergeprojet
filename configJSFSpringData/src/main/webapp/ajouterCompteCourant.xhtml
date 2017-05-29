@@ -15,15 +15,17 @@
 	</header>
 	<h:form>
 		<p:menubar>
-			<p:menuitem action="listeClients" value="Liste clients" />
-			<p:menuitem action="detailsClient" value="Retour page client" />
-			<f:facet name="options">
-				<p:outputLabel class="barre"
-					value="Bonjour #{conseillerBean.conseiller.nom}, " />
-				<p:commandButton class="barre" type="submit" icon="ui-icon-extlink"
-					action="#{conseillerBean.deconnexion}" value="Déconnexion" />
-			</f:facet>
-		</p:menubar>
+		<p:menuitem action="listeClients" value="Liste clients" />
+		<f:facet name="options">
+			<p:outputLabel class="barre" value="Bonjour #{conseillerBean.conseiller.nom}, " />
+			 <p:splitButton value="MonCompte" >
+        <p:menuitem value="Changement mots de Passe"   action="changementPWD" />
+
+    </p:splitButton>
+            <p:commandButton class="barre" type="submit" icon="ui-icon-extlink" action="#{conseillerBean.deconnexion}" value="Déconnexion"/>
+            	
+         </f:facet>
+       </p:menubar>
 	</h:form>
 
 	<h:form>
@@ -33,6 +35,8 @@
 			layout="grid" styleClass="ui-panelgrid-blank">
 			<p:outputLabel value="Decouvert autorisé :" for="decouvert" />
 			<p:inputText id="decouvert" value="#{compteBean.compteCourant.decouvert}" />
+			<p:outputLabel value="montant offert a l'ouverture:" for="solde" />
+			<p:inputText id="solde" value="#{compteBean.compteCourant.solde}" />
 		</p:panelGrid>
 		<br/>
 

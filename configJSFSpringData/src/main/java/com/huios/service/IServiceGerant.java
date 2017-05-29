@@ -2,10 +2,13 @@ package com.huios.service;
 
 import java.util.Collection;
 
+import com.huios.metier.Compte;
 import com.huios.metier.Conseiller;
 import com.huios.metier.Gerant;
 
 public interface IServiceGerant {
+
+	
 
 	public void ajouterConseiller(long idPersonne , Conseiller conseiller);
 	public void ajouterGerant(Gerant gerant);
@@ -20,4 +23,7 @@ public interface IServiceGerant {
 	public Collection<Conseiller> listerConseillerParGerant(Gerant gerant);
 	
 	public Gerant verificationLoginGerant(String login, String pwd);
+	
+	public void modifierConseiller(Conseiller conseiller);
+	public Collection<Compte> listeCompteDecouvert(Gerant gerant);
 }

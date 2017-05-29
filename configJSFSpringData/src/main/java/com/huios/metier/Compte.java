@@ -17,12 +17,12 @@ import org.springframework.stereotype.Component;
 @Component
 @Scope("prototype")
 @DiscriminatorColumn(name = "TYPE_COMPTE")
-public class Compte {
+public abstract class Compte {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long numeroCompte;
-	private double solde;
+	private double solde = 0;
 	private String dateOuverture;
 	@ManyToOne
 	private Client client;

@@ -1,6 +1,7 @@
 package com.huios.mbeans;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.faces.bean.ManagedProperty;
@@ -34,6 +35,9 @@ public class ClientBean implements Serializable {
 	@Autowired
 	@ManagedProperty(value="#{conseillerBean}")
 	private ConseillerBean conseillerBean;
+	
+	@Autowired
+	private CompteBean compteBean;
 	
 	@Autowired
 	private Adresse adresse;
@@ -74,15 +78,12 @@ public class ClientBean implements Serializable {
 	
 	public String afficherDetails(){
 		return "detailsClient";
+		
 	}
 	
 	public String modifierClient(){
 		service.modifierClient(client);
 		return "detailsClient";
-	}
-	public void delete(){
-		service.deleteClient(client);
-		client = new Client();
 	}
 
 	
@@ -97,5 +98,12 @@ public class ClientBean implements Serializable {
 		client.setAdresse(adresse);
 		return "ajouterClient";
 	}
+	
+	public String modifierConseiller(){
+		client.setConseiller(conseillerBean.getConseiller());
+		service.modifierClient(client);
+		return "detailsConseiller";
+	}
+	
 	
 }
